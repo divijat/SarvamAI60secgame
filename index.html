@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 60-Second Interrogation | Sarvam AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-grid"></div>
+  <div class="ambient-glow"></div>
+
+  <main class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-badges">
+        <span class="badge badge-accent">SARVAM AI BUILDATHON</span>
+        <span id="backendBadge" class="badge badge-outline">BACKEND ROUTE READY</span>
+        <span id="micBadge" class="badge badge-outline">🎤 MIC: STANDBY</span>
+      </div>
+      <h1 class="glitch-title">THE 60-SECOND INTERROGATION</h1>
+      <p class="subtitle">The suspect holds a classified secret identity. You have 60 seconds to break them with Yes/No questions.</p>
+    </header>
+
+    <!-- Top Dashboard: Timer & Round Status -->
+    <section class="dashboard-panel">
+      <!-- Circular Timer Display -->
+      <div class="timer-card">
+        <div class="timer-dial-wrapper">
+          <svg class="timer-dial" viewBox="0 0 160 160">
+            <circle class="timer-track" cx="80" cy="80" r="70" />
+            <circle id="timerProgress" class="timer-progress" cx="80" cy="80" r="70" />
+          </svg>
+          <div class="timer-readout">
+            <span class="timer-label">TIME REMAINING</span>
+            <span id="timerDisplay" class="timer-digits">01:00</span>
+            <span id="timerStatus" class="timer-status">STANDBY</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mission Status Info -->
+      <div class="info-card">
+        <div class="info-header">
+          <span class="info-title">INTERROGATION BRIEF</span>
+          <button id="resetBtn" class="btn-secondary" title="Reset Session">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+              <path d="M3 3v5h5"/>
+            </svg>
+            Reset
+          </button>
+        </div>
+        <div class="rules-list">
+          <div class="rule-item">
+            <span class="rule-number">01</span>
+            <p><strong>Push & Hold</strong> the button (or hold <kbd>Space</kbd>) to interrogate.</p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">02</span>
+            <p>The AI answers strictly: <em>Yes</em>, <em>No</em>, <em>Sometimes</em>, or <em>Irrelevant</em>.</p>
+          </div>
+          <div class="rule-item">
+            <span class="rule-number">03</span>
+            <p>Timer begins on your <strong>first press</strong>. Guess the identity to win!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interrogation Transcript Feed -->
+    <section class="chat-section">
+      <div class="chat-header">
+        <div class="chat-title-group">
+          <span class="live-dot"></span>
+          <span class="chat-title">TRANSCRIPT LOG</span>
+        </div>
+        <span id="turnCounter" class="turn-counter">3 exchanges recorded</span>
+      </div>
+
+      <div id="chatLog" class="chat-log" role="log" aria-live="polite">
+        <!-- Messages rendered dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- Push To Talk Controls -->
+    <section class="ptt-section">
+      <div class="ptt-container">
+        <!-- Visual Waveform Rings -->
+        <div class="pulse-ring pulse-1" id="pulseRing1"></div>
+        <div class="pulse-ring pulse-2" id="pulseRing2"></div>
+
+        <button id="pttButton" class="ptt-button" aria-label="Push to Talk" type="button">
+          <div class="ptt-inner">
+            <div class="ptt-icon-wrapper">
+              <svg id="micIcon" class="ptt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" x2="12" y1="19" y2="22"/>
+                <line x1="8" x2="16" y1="22" y2="22"/>
+              </svg>
+            </div>
+            <span id="pttLabel" class="ptt-label">HOLD TO TALK</span>
+          </div>
+        </button>
+      </div>
+
+      <div class="ptt-hint">
+        <span class="hint-badge">CLICK & HOLD</span> or press and hold <kbd>SPACEBAR</kbd>
+      </div>
+    </section>
+
+    <!-- Game Status Banner (Hidden initially) -->
+    <div id="gameStatusBanner" class="status-banner hidden">
+      <div class="banner-content">
+        <span id="bannerTitle" class="banner-title">GAME OVER</span>
+        <span id="bannerSubtitle" class="banner-subtitle">Time expired!</span>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

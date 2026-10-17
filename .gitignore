@@ -1,0 +1,27 @@
+# Environment variables & secrets (NEVER commit your Sarvam API Key!)
+.env
+.env.local
+*.env
+
+# Audio recordings & temporary files
+*.wav
+*.webm
+*.ogg
+*.mp3
+latest_recording.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
